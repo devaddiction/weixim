@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="WEIXim"
+            extensions="weixim"
+            icon="icons/gW.ico"
+            class="glueweb.editors.MultiPageEditor"
+            id="glueweb.editors.MultiPageEditor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="WEIXim"
+            id="WEIXim">
+      </category>
+       <wizard
+             category="WEIXim"
+             class="glueweb.wizards.GlueWebWizard"
+             finalPerspective="glueweb.perspectives.GlueWebPerspective"
+             icon="icons/gW.ico"
+             id="glueweb.wizards.GlueWebWizard"
+             name="WEIXim Project"
+             project="true">
+      </wizard>
+      
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="glueweb.perspectives.GlueWebPerspective"
+            icon="icons/gW.ico"
+            id="glueweb.perspectives.GlueWebPerspective"
+            name="WEIXim Perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         id="*.info"
+         name="*.info"
+         point="org.eclipse.ui.ide.resourceFilters">
+      <filter
+            pattern="*.info"
+            selected="true">
+         <description>
+            Filtro de .info
+         </description>
+      </filter>
+            <filter
+            pattern="*.project"
+            selected="true">
+         <description>
+            Filtro de .project
+         </description>
+      </filter>
+   </extension>
+
+</plugin>

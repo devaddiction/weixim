@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="wizards-aid" id="{UMLID=_GgwFcCOcEd-xMp3ApbtVtg,JavaID=glueweb.wizards}" metadata="uml2-1.0" initialized="true" tag="10" key="323030373036323920476C7565576562" Shrink="true">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.0" name="GlueWebWizardPage" location="50,50" size="183,27" timstampe="6" stereotype="" id="{UMLID=_bjwIsCOdEd-xMp3ApbtVtg,JavaID=glueweb.wizards/GlueWebWizardPage}" shortShow="true" runTimeClassModel="createControl(),locationPathField,getProjectNameFieldValue(),createAximOrGlue(),getProjectLocationFieldValue(),locationLabel,getDefaultLocationForName(Ljava.lang.String;),createProjectNameGroup(),useDefaults(),GlueWebWizardPage(Ljava.lang.String;),initialLocationFieldValue,getGlueButton(),handleLocationBrowseButtonPressed(),radioButton2,getLocationPath(),radioButton1,setLocationForSelection(),setVisible(Z),projectNameField,createProjectLocationGroup(),validatePage(),createUserSpecifiedProjectLocationGroup(Z),SIZING_TEXT_FIELD_WIDTH,customLocationFieldValue,setInitialProjectName(Ljava.lang.String;),nameModifyListener,useDefaults,browseButton,getProjectHandle(),initialProjectFieldValue,locationModifyListener,getCreateButton(),getProjectName()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_bv5uUCOdEd-xMp3ApbtVtg}" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.0/@children.2" label="//@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,13" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="wizardPage" location="183,13" id="{UMLID=_bju6kCOdEd-xMp3ApbtVtg}" attachSource="true" multiplicityLabel="//@children.0/@sourceConnections.0/@children.1/@children.0" roleLabel="//@children.0/@sourceConnections.0/@children.1/@children.1" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="240,70" size="6,13" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="- wizardPage" location="245,28" size="66,13" fontInfo="Arial-8-0" automaticRelocationAllowed="false" locationOnWireFromSource="-41.0" distanceFromWire="29.0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="0,13" id="{UMLID=_bv5uUSOdEd-xMp3ApbtVtg}" multiplicityLabel="//@children.0/@sourceConnections.0/@children.2/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="393,43" size="6,13" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0" name="GlueWebWizard" location="406,50" size="149,27" timstampe="442" stereotype="" id="{UMLID=_bi5NECOdEd-xMp3ApbtVtg,JavaID=glueweb.wizards/GlueWebWizard}" shortShow="true" runTimeClassModel="GlueWebWizard(),init(),openContentStream(),createProject(),write404(),deleteDir(Ljava.io.File;),wizardPage,project,addFileToProject(Ljava.io.InputStream;Ljava.io.InputStream;),performFinish(),config,workbench,setInitializationData(Ljava.lang.String;Ljava.lang.Object;),addPages(),projectName,copyImage()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" id="{UMLID=_bt6KQCOdEd-xMp3ApbtVtg}" source="//@children.1" target="//@children.0" targetEnd="//@children.1/@sourceConnections.0/@children.2" label="//@children.1/@sourceConnections.0/@children.0" sourceEnd="//@children.1/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="79,26" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,23" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="183,3"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" level="4" showScope="InPackage" properties="wireOptions=7"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="14,14" gridOrigin="0,56" rulerUnit="cm" gridShow="true">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" shortPackageNameFormat="true" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showInnerEntity="true"/>
+</editmodel:ClassDiagramEditModel>
