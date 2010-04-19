@@ -1,3 +1,5 @@
+#summary Esta página pretende enseñar a trabajar con el control de tickets de Google Code
+
 = Introducción =
 El sistema de tickets es una forma sencilla y simple para mantener un registro del estado de fallas, errores o peticiones de mejora a un programa. Dicha herramienta posibilita una comunicación fluida entre los desarrolladores a la vez de sentar las bases para las soluciones. 
 
