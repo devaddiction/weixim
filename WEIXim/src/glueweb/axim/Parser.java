@@ -4362,7 +4362,7 @@ public class Parser {
 	 * por pantalla. Destinado a depurar el programa
 	 * */
 	public void debug(String linea) {
-		System.out.println(linea);
+		glueweb.pages.LogPanel.printLine(linea);
 	}
 
 	public static boolean deleteDir(File dir) {
