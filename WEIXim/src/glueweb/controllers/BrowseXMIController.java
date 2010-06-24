@@ -51,11 +51,12 @@ public class BrowseXMIController extends SelectionAdapter {
 	 */
 	private void handleBrowse(Button item) {
 		FileDialog sourceDialog = new FileDialog(new Shell(), SWT.OPEN);
-		sourceDialog.setFilterExtensions(new String[] { "*.mdxml", "*.mdzip",
+		sourceDialog.setFilterExtensions(new String[] { "*.mdxml", 
+//				"*.mdzip",
 				"*.xml", "*.xmi" });
 		sourceDialog.setFilterNames(new String[] {
 				"Magic Draw File Format (*.mdxml)",
-				"Packed Magic Draw File Format (*.mdzip)",
+//				"Packed Magic Draw File Format (*.mdzip)",
 				"Extensible Markup Language (*.xml)", "XMI files (*.xmi)" });
 
 		String fileName = null;
@@ -75,15 +76,18 @@ public class BrowseXMIController extends SelectionAdapter {
 						glueweb.util.Copy.unZipFileToDirectory(fileName, path
 								.toString()
 								+ "/User Interface/");
+						fileName = path.toString() + "/User Interface/" + fileName(fileName);
 					}
 					if (this.id.equals("blText")){
 						glueweb.util.Copy.unZipFileToDirectory(fileName, path
 								.toString()
 								+ "/Bussiness Logic/");
+						fileName = path.toString() + "/Bussiness Logic/" + fileName(fileName);
 					}if (this.id.equals("dText")){
 						glueweb.util.Copy.unZipFileToDirectory(fileName, path
 								.toString()
 								+ "/Data/");
+						fileName = path.toString() + "/Data/" + fileName(fileName);
 					}		
 				} catch (IOException e) {
 					this.multiEditor.showErrorGlue("Glue Web",
