@@ -53,9 +53,9 @@ public class ModifiersHTML {
 				if (encontrado) {
 					tmp.println(formLine);
 					actionPost = Global.isActionOrPost(modificador);
-					tmp.println("<form method="
+					tmp.println("<form method=\""
 							+ actionPost
-							+ " action=\""
+							+ "\" action=\""
 							+ Global.getRelativePath(new File(direccion),
 									new File(action))
 							+ "\" target=\"_parent\">");
