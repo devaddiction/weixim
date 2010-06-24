@@ -20,9 +20,9 @@ public class Global {
 
 		String linea = null;
 		while ((linea = bf.readLine()) != null) {
-			if (linea.contains("<FORM>".toUpperCase())) {
+			if (linea.toUpperCase().contains("<FORM>")) {
 				linea = bf.readLine();
-				while (linea != null && !linea.contains("</FORM>".toUpperCase())) {
+				while (linea != null && !linea.toUpperCase().contains("</FORM>")) {
 					linea = bf.readLine();
 					if (linea.toUpperCase().contains(event.toUpperCase()))
 						return true;
@@ -38,8 +38,8 @@ public class Global {
 		boolean resultado = false;
 		String linea = null;
 		while ((linea = bf.readLine()) != null) {
-			if (linea.contains("<head>")) {
-				while (!(linea = bf.readLine()).contains("</head>")) {
+			if (linea.toUpperCase().contains("<HEAD>")) {
+				while (!(linea = bf.readLine()).toUpperCase().contains("</HEAD>")) {
 					if (linea.contains(event))
 						resultado = true;
 				}
