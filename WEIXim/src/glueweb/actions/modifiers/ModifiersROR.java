@@ -86,7 +86,6 @@ public class ModifiersROR {
 		PrintWriter tmp = new PrintWriter(fichero1);
 
 		linea = bf.readLine();
-		System.out.println(nombre);
 		while (linea != null) {
 			if (linea.toUpperCase().contains(nombre.toUpperCase())) {
 				tmp.println(linea);

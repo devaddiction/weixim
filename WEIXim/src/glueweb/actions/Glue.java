@@ -85,9 +85,12 @@ public class Glue {
 		try {
 			modifyFiles();
 		} catch (Exception e) {
-			this.multiEditor.showErrorGlue("Glue Web", "Error in Glue action");
+			this.multiEditor
+					.showErrorGlue(
+							"Glue Web",
+							"Error in the gluing process. Please see the console of execution for more information.");
 			glueweb.pages.LogPanel
-					.printLine("\t-GLUEWEB ERROR- Error in Glue action");
+					.printLine("\t-GLUEWEB ERROR- Error in the gluing process.");
 
 		}
 		this.multiEditor.showDelete();
@@ -104,15 +107,14 @@ public class Glue {
 		boolean downloadedIU = false;
 		boolean downloadedBL = false;
 		int barrasCarga = 0;
-		int contadorDependencias = 0;
 
 		for (String str : associations.keySet()) {
 			glueweb.pages.MainPanel.statusOk("");
-			barrasCarga = barrasCarga
+			if(barrasCarga < 100)
+				barrasCarga = barrasCarga
 					+ (glueweb.pages.MainPanel.loading.getMaximum() / associations
 							.size());
 			glueweb.pages.MainPanel.loading.setSelection(barrasCarga);
-
 			if (associations.get(str).getEstereotipoSource().equals("page")
 					&& !(infoUI.getTechnology().equals("Ruby") && infoBL
 							.getTechnology().equals("Ruby"))) {
@@ -120,10 +122,12 @@ public class Glue {
 						+ associations.get(str).getSourceCode().toString()
 						+ "." + setExtension(infoUI.getTechnology());
 				modifyIU = pathIU;
+				
 				pathBL = infoBL.getLocation().toString() + "/"
 						+ associations.get(str).getTargetCode().toString()
 						+ "." + setExtension(infoBL.getTechnology());
 				modifyBL = pathBL;
+
 				IFile file = (IFile) ((IEditorPart) multiEditor)
 						.getEditorInput().getAdapter(IFile.class);
 				String path = System.getProperty("osgi.instance.area")
@@ -131,10 +135,11 @@ public class Glue {
 						+ fileName(file.getProject().toString());
 
 				if (!infoUI.isLocal()) {
-					pathIU = path + "/User Interface/"
+					pathIU = path + "/User Interface/" + "/"
 							+ associations.get(str).getSourceCode().toString()
 							+ "." + setExtension(infoUI.getTechnology());
-					modifyIU = infoUI.getLocation() + "/"
+					System.out.println(pathIU.toString());
+					modifyIU = infoUI.getLocation() 
 							+ associations.get(str).getSourceCode().toString()
 							+ "." + setExtension(infoUI.getTechnology());
 					if (!downloadedIU) {
@@ -157,12 +162,13 @@ public class Glue {
 				}
 
 				if (!infoBL.isLocal()) {
-					pathBL = path + "/Bussiness Logic/"
+					pathBL = path + "/Bussiness Logic/" + "/"
 							+ associations.get(str).getTargetCode().toString()
 							+ "." + setExtension(infoBL.getTechnology());
 					modifyBL = infoBL.getLocation() + "/"
 							+ associations.get(str).getTargetCode().toString()
 							+ "." + setExtension(infoBL.getTechnology());
+					System.out.println(pathBL.toString());
 					if (!downloadedBL) {
 						glueweb.util.FTP.downloadFileByFTP(infoBL, associations
 								.get(str).getTargetCode().toString()
@@ -211,12 +217,12 @@ public class Glue {
 			}
 			i++;
 
-			contadorDependencias++;
 		}
 		glueweb.pages.MainPanel.loading
 				.setSelection(glueweb.pages.MainPanel.loading.getMaximum());
 
 		ArrayList<String> pages = glueweb.xmi.ParserXMI.getPagesFromFile(xmiUI);
+
 		glueweb.pages.ExplorerPanel.tabItem.setText(pages.get(0) + "."
 				+ setExtension(infoUI.getTechnology()));
 		glueweb.pages.ExplorerPanel.browser.setUrl(infoUI.getLocation()
@@ -234,13 +240,13 @@ public class Glue {
 					+ setExtension(infoUI.getTechnology()));
 		}
 
-		if (infoUI.getWebServerLocation() != null) {
+		if (infoUI.getWebServerLocation() != "") {
 			for (int j = 0; j < downloaderFilesIU.size(); j++)
 				glueweb.util.FTP.uploadFileByFTP(infoUI, downloaderFilesIU.get(
 						j).toString());
 		}
 
-		if (infoBL.getWebServerLocation() != null) {
+		if (infoBL.getWebServerLocation() != "") {
 			for (int j = 0; j < downloaderFilesBL.size(); j++)
 				glueweb.util.FTP.uploadFileByFTP(infoBL, downloaderFilesBL.get(
 						j).toString());
@@ -248,9 +254,15 @@ public class Glue {
 
 		downloaderFiles.addAll(downloaderFilesIU);
 		downloaderFiles.addAll(downloaderFilesBL);
-		// downloaderFiles.add(path + "/User Interface/ui.info");
-		// downloaderFiles.add(path + "/Bussiness Logic/bl.info");
-		// downloaderFiles.add(path + "/Data/d.info");
+		downloaderFiles.add(ResourcesPlugin.getWorkspace().getRoot()
+				.getLocation().toString()
+				+ "/" + "/User Interface/ui.info");
+		downloaderFiles.add(ResourcesPlugin.getWorkspace().getRoot()
+				.getLocation().toString()
+				+ "/" + "/Bussiness Logic/bl.info");
+		downloaderFiles.add(ResourcesPlugin.getWorkspace().getRoot()
+				.getLocation().toString()
+				+ "/" + "/Data/d.info");
 		downloaderFiles.add(ResourcesPlugin.getWorkspace().getRoot()
 				.getLocation().toString()
 				+ "/" + "temp_form");
@@ -282,11 +294,11 @@ public class Glue {
 				downloaderFiles.remove(i);
 		}
 		for (int i = 0; i < downloaderFiles.size(); i++) {
-			File fichero = new File(downloaderFiles.get(i).toString());
-			if (fichero.delete()) {
-				glueweb.pages.LogPanel.printLine("Deleting... "
-						+ downloaderFiles.get(i));
-			}
+//			File fichero = new File(downloaderFiles.get(i).toString());
+//			if (fichero.delete()) {
+//				glueweb.pages.LogPanel.printLine("Deleting... "
+//						+ downloaderFiles.get(i));
+//			}
 		}
 		try {
 			ResourcesPlugin.getWorkspace().getRoot().refreshLocal(
@@ -456,10 +468,20 @@ public class Glue {
 					temp.setLocation(br.readLine());
 					temp.setViewpointLanguage(br.readLine());
 					temp.setTechnology(br.readLine());
-					temp.setWebServerLocation(br.readLine());
-					temp.setWebServerPort(br.readLine());
-					temp.setWebServerUser(br.readLine());
-					temp.setWebServerPass(br.readLine());
+					String cadena = br.readLine(); 
+					if(!cadena.isEmpty())
+						temp.setWebServerLocation(cadena.toString());
+					cadena = br.readLine();
+					if(!cadena.isEmpty())
+						temp.setWebServerPort(cadena.toString());
+					else
+						temp.setWebServerPort("0".toString());
+					cadena = br.readLine();
+					if(!cadena.isEmpty())
+						temp.setWebServerUser(cadena.toString());
+					cadena = br.readLine();
+					if(!cadena.isEmpty())	
+						temp.setWebServerPass(cadena.toString());
 					temp.setPort(null);
 					temp.setUser(null);
 					temp.setPass(null);
@@ -471,10 +493,20 @@ public class Glue {
 					temp.setPass(br.readLine());
 					temp.setViewpointLanguage(br.readLine());
 					temp.setTechnology(br.readLine());
-					temp.setWebServerLocation(br.readLine());
-					temp.setWebServerPort(br.readLine());
-					temp.setWebServerUser(br.readLine());
-					temp.setWebServerPass(br.readLine());
+					String cadena = br.readLine(); 
+					if(!cadena.isEmpty())
+						temp.setWebServerLocation(cadena.toString());
+					cadena = br.readLine();
+					if(!cadena.isEmpty())
+						temp.setWebServerPort(cadena.toString());
+					else
+						temp.setWebServerPort("0".toString());
+					cadena = br.readLine();
+					if(!cadena.isEmpty())
+						temp.setWebServerUser(cadena.toString());
+					cadena = br.readLine();
+					if(!cadena.isEmpty())	
+						temp.setWebServerPass(cadena.toString());
 				}
 			} else {
 				temp.setLocal();
