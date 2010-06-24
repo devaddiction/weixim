@@ -38,12 +38,12 @@ public class ModifiersHTML {
 		PrintWriter aux = new PrintWriter(fichero2);
 
 		while (((linea = bf.readLine()) != null) && (!encontrado)) {
-			if (!linea.contains("<form>"))
+			if (!linea.toUpperCase().contains("<FORM>"))
 				tmp.println(linea);
 			else {
 				Global.clearContent(nomFich2);
 				String formLine = Global.printToElement(linea, tmp, "<form>");
-				while (!((linea = bf.readLine()).contains("</form>"))) {
+				while (!((linea = bf.readLine()).toUpperCase().contains("</FORM>"))) {
 					aux.println(linea);
 					if (linea.contains(event))
 						encontrado = true;
@@ -78,7 +78,6 @@ public class ModifiersHTML {
 			String modificador, String estereotipo, String evento, String metodo)
 			throws IOException {
 
-		boolean encontrado = false;
 		BufferedReader bf = new BufferedReader(new FileReader(direccion));
 
 		String linea = null;
@@ -110,15 +109,15 @@ public class ModifiersHTML {
 	}
 
 	private static void pintaFichero(String direccion) throws IOException{
-		System.out.println("\n---------------------");
+		glueweb.pages.LogPanel.printLine("\n---------------------");
 		BufferedReader bf = new BufferedReader(new FileReader(direccion));
 		String linea = null;
 		linea = bf.readLine();
 		while(linea!=null){
-			System.out.println(linea);
+			glueweb.pages.LogPanel.printLine(linea);
 			linea = bf.readLine();
 		}
-		System.out.println("\n---------------------");
+		glueweb.pages.LogPanel.printLine("\n---------------------");
 		bf.close();
 		
 	}
