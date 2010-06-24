@@ -17,17 +17,19 @@ public class Global {
 	public static boolean inForm(String direccion, String event)
 			throws IOException {
 		BufferedReader bf = new BufferedReader(new FileReader(direccion));
-		boolean resultado = false;
+
 		String linea = null;
 		while ((linea = bf.readLine()) != null) {
-			if (linea.contains("<form>")) {
-				while (!(linea = bf.readLine()).contains("</form>")) {
-					if (linea.contains(event))
-						resultado = true;
+			if (linea.contains("<FORM>".toUpperCase())) {
+				linea = bf.readLine();
+				while (linea != null && !linea.contains("</FORM>".toUpperCase())) {
+					linea = bf.readLine();
+					if (linea.toUpperCase().contains(event.toUpperCase()))
+						return true;
 				}
 			}
 		}
-		return resultado;
+		return false;
 	}
 
 	public static boolean inHead(String direccion, String event)
