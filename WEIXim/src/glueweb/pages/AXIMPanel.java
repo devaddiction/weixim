@@ -82,7 +82,7 @@ public class AXIMPanel extends Composite {
 		imagePictureGroup.setLayoutData(gridData1);
 
 
-		Image imagen = Activator.imageDescriptorFromPlugin("WEIXim", "icons/image.jpg").createImage();
+		Image imagen = Activator.imageDescriptorFromPlugin("WEIXim", "/icons/image.jpg").createImage();
 		imagePictureGroup.setBackgroundImage(imagen);
 
 		gridData1 = new GridData();

@@ -298,7 +298,6 @@ public class GlueWebWizard extends Wizard implements INewWizard,
 
 	private static void copyImage() throws IOException {
 		String path = System.getProperty("osgi.syspath");
-		System.out.println(System.getProperties());
 		glueweb.util.Copy.unZipFileToDirectory(path.toString()
 				+ "/WEIXim_1.0.0.jar", ResourcesPlugin.getWorkspace().getRoot()
 				.getLocation().toString()

@@ -221,13 +221,13 @@ public class ParserXMI {
 				if (!associations.containsKey(contextName))
 					associations.put(contextName, assoc);
 			} else {
-				System.out.println("Métodos no concuerdan");
+				glueweb.pages.LogPanel.printLine("Failed dependencies methods");
 			}
 
 		} catch (FileNotFoundException e) {
-			System.out.println("\t-XMI ERROR- File not found");
+			glueweb.pages.LogPanel.printLine("\t-XMI ERROR- File not found");
 		} catch (IOException e) {
-			System.out.println("\t-XMI ERROR- I/O error");
+			glueweb.pages.LogPanel.printLine("\t-XMI ERROR- I/O error");
 		}
 
 	}
