@@ -146,7 +146,7 @@ public class MultiPageEditor extends MultiPageEditorPart implements
 		getContainer().getShell().setText("GlueWeb");
 		boolean delete = MessageDialog.openQuestion(getContainer().getShell(),
 				"GlueWeb", "Do you want to delete temporary files?");
-		if (delete)
+		if (delete == true)
 			glueweb.actions.Glue.deleteAfterGlue = true;
 	}
 

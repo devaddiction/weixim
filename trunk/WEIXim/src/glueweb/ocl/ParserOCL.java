@@ -60,9 +60,9 @@ public class ParserOCL {
 			}
 			saveTemp();
 		} catch (FileNotFoundException e) {
-			glueweb.pages.LogPanel.printLine("\t-OCL ERROR- File not found");
+			System.out.println("\t-OCL ERROR- File not found");
 		} catch (IOException e) {
-			glueweb.pages.LogPanel.printLine("\t-OCL ERROR- I/O error");
+			System.out.println("\t-OCL ERROR- I/O error");
 		}
 	}
 	
@@ -260,7 +260,7 @@ public class ParserOCL {
 			else
 				pw.println("["+str+"] fail!");
 		}
-		glueweb.pages.LogPanel.printLine(sw.getBuffer().toString());
+		System.out.println(sw.getBuffer().toString());
 	}
 	
 	/**

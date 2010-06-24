@@ -57,7 +57,6 @@ public class FTP {
 		}
 
 		FTPClient ftp = new FTPClient();
-
 		ftp.connect(host, Integer.parseInt(infoFile.getPort()));
 
 		return ftp.login(infoFile.getUser().toString(), infoFile.getPass()
