@@ -44,16 +44,16 @@ public class GlueController extends SelectionAdapter {
 	private void handleGlue() throws IOException {
 		if (uiText.getText() == null || uiText.getText().equals(""))
 			this.multiEditor.showErrorGlue("Glue Web",
-					"User Interface Model is null");
+					"The field User Interface Model can not be empty");
 		else if (blText.getText() == null || blText.getText().equals(""))
 			this.multiEditor.showErrorGlue("Glue Web",
-					"Bussiness Logic Model is null");
+					"The field Bussiness Logic Model can not be empty");
 		else if (oclText.getText() == null || oclText.getText().equals(""))
-			this.multiEditor.showErrorGlue("Glue Web", "Constraints is null");
+			this.multiEditor.showErrorGlue("Glue Web", "The field Correspondences can not be empty");
 		else {
 			if (glueweb.pages.MainPanel.emptyText()) {
 				this.multiEditor.showErrorProperties("Glue Web",
-						"Some values are null", glueweb.pages.MainPanel
+						"Missing parameters set", glueweb.pages.MainPanel
 								.whatEmptyText());
 			} else
 				new Glue(uiText.getText(), blText.getText(), dText.getText(),
